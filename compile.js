@@ -8,24 +8,21 @@ const inboxPath = path.resolve(__dirname, "contracts", "Inbox.sol");
 // now we have our path we will read the raw code
 const source = fs.readFileSync(inboxPath, "utf8");
 
-console.log(
-  JSON.parse(
-    solc.compile(
-      JSON.stringify({
-        language: "Solidity",
-        sources: {
-          "Inbox.sol": {
-            content: source,
-          },
-        },
-        settings: {
-          outputSelection: {
-            "*": {
-              "*": ["evm", "bytecode"],
-            },
-          },
-        },
-      })
-    )
-  )
-);
+const input = {
+  language: "Solidity",
+  sources: {
+    "Inbox.sol": {
+      content: source,
+    },
+  },
+  settings: {
+    outputSelection: {
+      "*": {
+        "*": ["*"],
+      },
+    },
+  },
+};
+const output = JSON.parse(solc.compile(JSON.stringify(input)));
+console.log(output.contracts["Inbox.sol"].Inbox.metadata);
+module.exports = output.contracts["Inbox.sol"].Inbox;
