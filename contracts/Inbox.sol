@@ -1,11 +1,12 @@
-pragma solidity ^0.6.6;
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.7.4;
 
 contract Inbox {
     // storage variables, can be mofidied or access and be called by anyone on the networks
     string public message;
 
     // 1st gotcha if you market a storage variable with public the contract is automatically going to create A NEw function for you with the same name
-    constructor(string memory initialMessage) public {
+    constructor(string memory initialMessage) {
         message = initialMessage;
     }
 
