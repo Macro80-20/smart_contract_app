@@ -1,9 +1,6 @@
+/* eslint-disable no-unused-vars */
 // take some compiled code and deploy to a network
-const compiledFile = require('./compile');
+import compiledFile from './compile';
 
-const contractInterface = compiledFile.abi;
-const bytecode = compiledFile.evm.bytecode.object;
-const metaData = compiledFile.metadata;
-console.log('Bytecode', bytecode);
-console.log('Interface', contractInterface);
-console.log('MetaData', JSON.parse(metaData));
+const { abi } = compiledFile;
+const { bytecode: { object } } = compiledFile.evm;
