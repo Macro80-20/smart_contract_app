@@ -3,9 +3,10 @@ pragma solidity ^0.7.4;
 
 contract Inbox {
     // storage variables, can be mofidied or access and be called by anyone on the networks
+     // 1st gotcha if you market a storage variable with public the contract is automatically going to create A NEw function for you with the same name
     string public message;
 
-    // 1st gotcha if you market a storage variable with public the contract is automatically going to create A NEw function for you with the same name
+   
     constructor(string memory initialMessage) {
         message = initialMessage;
     }
